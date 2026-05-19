@@ -1,0 +1,12 @@
+{
+  "last_layout": "Full ANSI.json",
+  "always_on_top": true,
+  "opacity": 0.95,
+  "click_through": false,
+  "theme": "dark",
+  "window": {
+    "x": 100,
+    "y": 100
+  },
+  "keystroke_translations": {}
+}

@@ -1,0 +1,170 @@
+{
+  "name": "Macro Pad",
+  "grid": 72,
+  "cols": 4,
+  "rows": 4,
+  "keys": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 1,
+      "h": 1,
+      "label": "Copy",
+      "macro": [
+        {
+          "vk": "C",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#274472"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "w": 1,
+      "h": 1,
+      "label": "Cut",
+      "macro": [
+        {
+          "vk": "X",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#274472"
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "w": 1,
+      "h": 1,
+      "label": "Paste",
+      "macro": [
+        {
+          "vk": "V",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#274472"
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "w": 1,
+      "h": 1,
+      "label": "Undo",
+      "macro": [
+        {
+          "vk": "Z",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#274472"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "label": "Save",
+      "macro": [
+        {
+          "vk": "S",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#3a6b35"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "label": "Find",
+      "macro": [
+        {
+          "vk": "F",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#3a6b35"
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "label": "All",
+      "macro": [
+        {
+          "vk": "A",
+          "mods": [
+            "Ctrl"
+          ]
+        }
+      ],
+      "color": "#3a6b35"
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "label": "AltTab",
+      "macro": [
+        {
+          "vk": "Tab",
+          "mods": [
+            "Alt"
+          ]
+        }
+      ],
+      "color": "#3a6b35"
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "w": 2,
+      "h": 1,
+      "label": "Sign-off",
+      "text": "Best regards,\nAlex\n",
+      "color": "#7a4a1f"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "w": 2,
+      "h": 1,
+      "label": "Email",
+      "text": "alex@example.com",
+      "color": "#7a4a1f"
+    },
+    {
+      "x": 0,
+      "y": 3,
+      "w": 4,
+      "h": 1,
+      "label": "Lock workstation",
+      "macro": [
+        {
+          "vk": "L",
+          "mods": [
+            "Win"
+          ]
+        }
+      ],
+      "color": "#5a1f1f"
+    }
+  ]
+}

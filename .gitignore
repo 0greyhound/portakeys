@@ -1,0 +1,30 @@
+# User config (contains personal settings)
+portakeys.config.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Temporary files
+.tmp/
+*.tmp
+
+# Fix scripts (development only)
+fix_*.py
+check_*.py
+test_*.py
+
+# Reports
+TRANSLATION_FIXES_REPORT.md
+
+# IDE
+.vscode/
+.idea/
+.qodo/
+
+# OS files
+.DS_Store
+Thumbs.db
