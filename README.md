@@ -13,7 +13,7 @@ A customizable virtual on-screen keyboard for Windows with keystroke translation
 
 ## Usage
 
-1. Run `python "portakeys (2).py"`
+1. Run `python portakeys.py`
 2. Select a layout from the dropdown (Full ANSI, Numpad, etc.)
 3. Click keys to type, or use physical keyboard with translation support
 
@@ -31,6 +31,14 @@ Create custom layouts via:
 1. **GUI**: Click "New" → Edit Mode → Arrange keys → Save
 2. **JSON**: Edit files in `layouts/` directory
 
+## Platform Support
+
+**Currently Windows-only** - The app relies on Windows-specific APIs (`SendInput`, `SetWindowsHookEx`) for sending keystrokes and capturing physical keyboard input.
+
+On Linux/macOS, the GUI will display but keystrokes won't be sent to other applications.
+
+**Want cross-platform support?** ⭐ Star this repository! If we get enough interest, we'll add Linux (X11/Wayland) and macOS (Quartz) support.
+
 ## Requirements
 
 - Windows
@@ -39,7 +47,7 @@ Create custom layouts via:
 
 ## Files
 
-- `portakeys (2).py` - Main application
+- `portakeys.py` - Main application
 - `layouts/` - Keyboard layout JSON files
 - `portakeys.config.json` - User settings (created on first run)
 
