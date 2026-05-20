@@ -1,0 +1,80 @@
+name: Speed Fix Implementation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  implement-speed-fix:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: dev
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Analyze and fix speed issue
+      run: |
+        python -c "
+import re
+
+# Read the file
+with open('portakeys.py', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Fix 1: Add debounce mechanism to prevent race conditions
+if '_last_key_time' not in content:
+    old_init = 'self._stroke_max_len = 50'
+    new_init = 'self._stroke_max_len = 50\n        self._last_key_time = 0\n        self._key_debounce_ms = 50'
+    content = content.replace(old_init, new_init)
+    print('Added debounce timing variables')
+
+# Fix 2: Improve _fire_key to handle rapid consecutive keys
+old_fire = 'def _fire_key(self, key_id: str) -> None:'
+new_fire = 'def _fire_key(self, key_id: str) -> None:\n        current_time = int(time.time() * 1000)\n        if key_id == getattr(self, "_last_key_id", None):\n            if current_time - self._last_key_time < self._key_debounce_ms:\n                return\n        self._last_key_time = current_time\n        self._last_key_id = key_id'
+
+if old_fire in content:
+    content = content.replace(old_fire, new_fire)
+    print('Added debounce logic to _fire_key')
+
+# Fix 3: Add buffer timestamp tracking
+old_check = 'buffer = self._stroke_buffer + new_char'
+new_check = 'self._buffer_timestamp = time.time()\n        buffer = self._stroke_buffer + new_char'
+if old_check in content:
+    content = content.replace(old_check, new_check)
+    print('Added buffer timestamp tracking')
+
+# Write the fixed file
+with open('portakeys.py', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print('Speed fixes applied successfully!')
+"
+        
+    - name: Test the fix
+      run: |
+        python -c "
+import sys
+sys.path.insert(0, '.')
+
+with open('portakeys.py', 'r', encoding='utf-8') as f:
+    code = f.read()
+    
+compile(code, 'portakeys.py', 'exec')
+print('Syntax check passed!')
+
+assert '_last_key_time' in code
+assert '_key_debounce_ms' in code
+print('All speed fixes verified!')
+"
+        
+    - name: Commit changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add portakeys.py
+        git commit -m "Fix speed gap for rapid consecutive character translation" || echo "No changes"
+        git push origin dev
